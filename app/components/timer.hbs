@@ -1,0 +1,46 @@
+
+    <div class="timer">
+            <div class="child1">
+                <p>Preostalo Vreme:</p>
+                <span id="timer">
+                
+                </span>
+        </div>
+
+        <div class="child2">
+            <button id="buttonTimer" type="button">START</button>
+        </div>
+    </div>
+    
+
+    <script>
+        let buttonTime = document.querySelector("#buttonTimer");
+
+    buttonTime.addEventListener('click', x);
+
+    function x() {
+            
+            document.querySelector(".child2").style.display = "none";   
+            
+            let timerEl = document.querySelector('#timer');
+            let time = 120;
+            let timerId;
+        
+            timerId = setInterval(  function() {     
+                time--;
+                timerEl.textContent = time + " sekundi";
+
+                if (time <= 0) {
+                    clearInterval(timerId);
+                    alert("Vreme je isteklo i kviz je zavrsen!");
+                    window.location.href = "http://localhost:4200/";
+                }  
+                
+            }, 1000);
+            
+            timerEl.textContent = time + " sekundi";
+        
+    };
+
+
+    </script>

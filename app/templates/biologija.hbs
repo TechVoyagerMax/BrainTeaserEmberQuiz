@@ -1,0 +1,36 @@
+
+<Timer/>
+{{#each @this.model.data as |elem|}}
+    <Question @arg1={{elem.question}} @arg2={{elem.answer}} @id={{elem.id}}/>
+{{/each}}
+
+
+<Submitquizbutton/>
+
+<script>
+    let submitButton = document.querySelector(".submit-button");
+    submitButton.addEventListener('click', fetchJSONData);
+    let userAnswersArray = document.querySelectorAll('.default-answer-input-style');
+        let niz = [];
+    function fetchJSONData() {
+            fetch("./api/teme/biologija.json")
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            (`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((data2) => 
+                        console.log(data2.data[0].answer))
+                .catch((error) => 
+                       console.error("Unable to fetch data:", error));
+
+                   
+        }
+
+        for(let i = 0; i < niz.length; i++) {
+            console.log(niz[i]);
+        }
+        
+</script>
